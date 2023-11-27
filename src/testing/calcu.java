@@ -118,11 +118,9 @@ public final class calcu extends javax.swing.JFrame {
         Rlength1 = new javax.swing.JTextField();
         Rwidth1 = new javax.swing.JTextField();
         Rheight1 = new javax.swing.JTextField();
-        Twidth1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        box5 = new javax.swing.JComboBox<>();
-        TileHeight1 = new javax.swing.JTextField();
-        jLabel53 = new javax.swing.JLabel();
+        TileWallWastage = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jSeparator2 = new javax.swing.JSeparator();
         CHBpanel = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
@@ -155,7 +153,7 @@ public final class calcu extends javax.swing.JFrame {
         CHBbtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         fTiles = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        wTiles = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         panel2btn = new javax.swing.JButton();
@@ -888,7 +886,7 @@ public final class calcu extends javax.swing.JFrame {
         jLabel51.setBackground(new java.awt.Color(51, 51, 51));
         jLabel51.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel51.setText("Tile Width: ");
+        jLabel51.setText("Tile Size: ");
 
         jLabel52.setBackground(new java.awt.Color(51, 51, 51));
         jLabel52.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -905,7 +903,7 @@ public final class calcu extends javax.swing.JFrame {
         });
 
         Rwidth1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        Rwidth1.setForeground(new java.awt.Color(204, 204, 204));
+        Rwidth1.setForeground(new java.awt.Color(0, 0, 0));
         Rwidth1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Rwidth1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -914,20 +912,11 @@ public final class calcu extends javax.swing.JFrame {
         });
 
         Rheight1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        Rheight1.setForeground(new java.awt.Color(204, 204, 204));
+        Rheight1.setForeground(new java.awt.Color(0, 0, 0));
         Rheight1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Rheight1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Rheight1ActionPerformed(evt);
-            }
-        });
-
-        Twidth1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        Twidth1.setForeground(new java.awt.Color(204, 204, 204));
-        Twidth1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Twidth1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Twidth1ActionPerformed(evt);
             }
         });
 
@@ -940,28 +929,18 @@ public final class calcu extends javax.swing.JFrame {
             }
         });
 
-        box5.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        box5.setForeground(new java.awt.Color(204, 204, 204));
-        box5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5%", "10%", "15%", "20%" }));
-        box5.addActionListener(new java.awt.event.ActionListener() {
+        TileWallWastage.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        TileWallWastage.setForeground(new java.awt.Color(204, 204, 204));
+        TileWallWastage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5%", "10%", "15%", "20%" }));
+        TileWallWastage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                box5ActionPerformed(evt);
+                TileWallWastageActionPerformed(evt);
             }
         });
 
-        TileHeight1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        TileHeight1.setForeground(new java.awt.Color(204, 204, 204));
-        TileHeight1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TileHeight1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TileHeight1ActionPerformed(evt);
-            }
-        });
-
-        jLabel53.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel53.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel53.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel53.setText("Tile Height: ");
+        jComboBox1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2\"x2\" = 0.0508 m", "4\"x4\" = 0.1016 m", "6\"x6\" = 0.1524 m", "8\"x8\" = 0.2032 m", "12\"x12\" = 0.3048 m", "16\"x16\" = 0.4064 m", "18\"x18\" = 0.4572 m", "24\"x24\" = 0.6096 m" }));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -979,49 +958,43 @@ public final class calcu extends javax.swing.JFrame {
                                 .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                                 .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Rwidth1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                             .addComponent(Rheight1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                            .addComponent(Twidth1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                            .addComponent(box5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TileHeight1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                            .addComponent(Rlength1))))
+                            .addComponent(TileWallWastage, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Rlength1)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(143, 143, 143))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Rlength1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(Rlength1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Rwidth1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Rheight1)
                     .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Twidth1)
-                    .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                    .addComponent(TileHeight1))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(jComboBox1))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(box5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TileWallWastage, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Rlength1.getDocument().addDocumentListener(new DocumentListener() {
@@ -1072,42 +1045,10 @@ public final class calcu extends javax.swing.JFrame {
                 // Plain text components do not fire these events
             }
         });
-        Twidth1.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                TileWallEstimator();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                TileWallEstimator();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                // Plain text components do not fire these events
-            }
-        });
-        box5.addActionListener(new ActionListener() {
+        TileWallWastage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CHBEstimator();
-            }
-        });
-        TileHeight1.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                TileWallEstimator();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                TileWallEstimator();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                // Plain text components do not fire these events
             }
         });
 
@@ -1517,7 +1458,14 @@ public final class calcu extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("jButton1");
+        wTiles.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        wTiles.setForeground(new java.awt.Color(204, 204, 204));
+        wTiles.setText("Wall Tiles");
+        wTiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wTilesActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("jButton1");
 
@@ -1546,7 +1494,7 @@ public final class calcu extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wTiles, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CHBbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fTiles, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1566,7 +1514,7 @@ public final class calcu extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addComponent(fTiles, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(wTiles, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
@@ -2401,21 +2349,13 @@ public final class calcu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Rheight1ActionPerformed
 
-    private void Twidth1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Twidth1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Twidth1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void box5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box5ActionPerformed
-        
-    }//GEN-LAST:event_box5ActionPerformed
-
-    private void TileHeight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TileHeight1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TileHeight1ActionPerformed
+    private void TileWallWastageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TileWallWastageActionPerformed
+            
+    }//GEN-LAST:event_TileWallWastageActionPerformed
 
     private void CHBWastageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CHBWastageActionPerformed
         // Assuming CHBWastage is your JComboBox<String>
@@ -2518,6 +2458,10 @@ public final class calcu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TileSizesActionPerformed
 
+    private void wTilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wTilesActionPerformed
+        TilesWall.setVisible(true);
+    }//GEN-LAST:event_wTilesActionPerformed
+
     /**
      *
      */
@@ -2591,7 +2535,25 @@ public void CHBEstimator() {
 
         private void TileWallEstimator(){
             try{
-            
+                if(Rlength1 != null && Rwidth1 != null && Rheight1 != null){
+                    System.out.println("Rlength value: '" + Rwidth1.getText() + "'");
+                    System.out.println("Rwidth value: '" + Rlength1.getText() + "'" );
+                    System.out.println("Rheight value: '" + Rheight1.getText() + "'" );
+                    
+                      if (Rlength1.getText().isEmpty() || Rwidth1.getText().isEmpty() || Rheight1.getText().isEmpty()) {
+                        System.err.println("Error: Please enter values in both text fields.");
+                        return;
+                    }
+                       if (!isNumeric(Rlength1.getText()) || !isNumeric(Rwidth1.getText()) || !isNumeric(Rheight1.getText())) {
+                        System.err.println("Error: Invalid input. Please enter valid numeric values in txtf1 and txtf2.");
+                        return;
+                    }
+                       
+                      //formula here!! 
+                       
+                       
+                       
+                }
             
             }
             catch(NumberFormatException e){
@@ -2746,8 +2708,8 @@ public void CHBEstimator() {
     private javax.swing.JTextField Tcost;
     private javax.swing.JTextField Tcost1;
     private javax.swing.JTextField Tcost2;
-    private javax.swing.JTextField TileHeight1;
     private javax.swing.JComboBox<String> TileSizes;
+    private javax.swing.JComboBox<String> TileWallWastage;
     private javax.swing.JFrame TilesFloor;
     private javax.swing.JFrame TilesWall;
     private javax.swing.JLabel Title4;
@@ -2755,12 +2717,10 @@ public void CHBEstimator() {
     private javax.swing.JLabel Title7;
     private javax.swing.JTextField Tneeded;
     private javax.swing.JTextField Tneeded1;
-    private javax.swing.JTextField Twidth1;
     private javax.swing.JComboBox<String> box1;
     private javax.swing.JComboBox<String> box2;
     private javax.swing.JComboBox<String> box3;
     private javax.swing.JComboBox<String> box4;
-    private javax.swing.JComboBox<String> box5;
     private javax.swing.JPanel components;
     private javax.swing.JTextField costPerTile;
     private javax.swing.JTextField fArea;
@@ -2773,12 +2733,12 @@ public void CHBEstimator() {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2826,7 +2786,6 @@ public void CHBEstimator() {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
@@ -2878,6 +2837,7 @@ public void CHBEstimator() {
     private javax.swing.JTextField txtf2;
     private javax.swing.JTextField txtf3;
     private javax.swing.JTextField txtf6;
+    private javax.swing.JButton wTiles;
     private javax.swing.JTextField woodCost;
     private javax.swing.JTextField woodCosts;
     private javax.swing.JTextField woodLength;

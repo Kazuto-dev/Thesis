@@ -14,21 +14,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 
 /**
  *
@@ -46,6 +43,11 @@ public final class calcu extends javax.swing.JFrame {
     String CHBWastages; 
     String CHBWastages1;
     String TileSizes1;
+    
+    //Excel Columns variables
+    String CHB = "Concrete Hollow Blocks";
+    int overallBricksRequired;
+    float wallArea;
     
     
     public calcu() {
@@ -241,7 +243,7 @@ public final class calcu extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jButton20 = new javax.swing.JButton();
+        gotoCHB = new javax.swing.JButton();
         electricalFrame = new javax.swing.JFrame();
         jPanel21 = new javax.swing.JPanel();
         jSeparator11 = new javax.swing.JSeparator();
@@ -2452,9 +2454,7 @@ public final class calcu extends javax.swing.JFrame {
         StructuralFrame.setAutoRequestFocus(false);
         StructuralFrame.setBackground(new java.awt.Color(51, 51, 51));
         StructuralFrame.setFocusable(false);
-        StructuralFrame.setMaximumSize(new java.awt.Dimension(900, 700));
         StructuralFrame.setMinimumSize(new java.awt.Dimension(900, 700));
-        StructuralFrame.setPreferredSize(new java.awt.Dimension(900, 700));
         StructuralFrame.setResizable(false);
 
         jPanel7.setBackground(new java.awt.Color(51, 51, 51));
@@ -2508,7 +2508,12 @@ public final class calcu extends javax.swing.JFrame {
         jLabel17.setToolTipText("");
         jLabel17.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testing/Icons/icons8-code-blocks-60.png"))); // NOI18N
+        gotoCHB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/testing/Icons/icons8-code-blocks-60.png"))); // NOI18N
+        gotoCHB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gotoCHBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -2526,7 +2531,7 @@ public final class calcu extends javax.swing.JFrame {
                                 .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(gotoCHB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2549,7 +2554,7 @@ public final class calcu extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(gotoCHB, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(30, 30, 30)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2576,9 +2581,7 @@ public final class calcu extends javax.swing.JFrame {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        electricalFrame.setMaximumSize(new java.awt.Dimension(900, 700));
         electricalFrame.setMinimumSize(new java.awt.Dimension(900, 700));
-        electricalFrame.setPreferredSize(new java.awt.Dimension(900, 700));
 
         jPanel21.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -2690,9 +2693,7 @@ public final class calcu extends javax.swing.JFrame {
             .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        plumbingFrame.setMaximumSize(new java.awt.Dimension(900, 700));
         plumbingFrame.setMinimumSize(new java.awt.Dimension(900, 700));
-        plumbingFrame.setPreferredSize(new java.awt.Dimension(900, 700));
         plumbingFrame.setResizable(false);
 
         jPanel6.setBackground(new java.awt.Color(51, 51, 51));
@@ -2803,9 +2804,7 @@ public final class calcu extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        ArchitecturalFrame.setMaximumSize(new java.awt.Dimension(900, 700));
         ArchitecturalFrame.setMinimumSize(new java.awt.Dimension(900, 700));
-        ArchitecturalFrame.setPreferredSize(new java.awt.Dimension(900, 700));
 
         jPanel22.setBackground(new java.awt.Color(51, 51, 51));
         jPanel22.setMaximumSize(new java.awt.Dimension(900, 700));
@@ -3509,7 +3508,11 @@ public final class calcu extends javax.swing.JFrame {
     }//GEN-LAST:event_txtf2ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        
+        try {
+            saveToExcel();
+        } catch (IOException ex) {
+            Logger.getLogger(calcu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void txtf1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtf1InputMethodTextChanged
@@ -3700,6 +3703,10 @@ public final class calcu extends javax.swing.JFrame {
         plumbingFrame.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void gotoCHBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoCHBActionPerformed
+        CHBpanel.setVisible(true);
+    }//GEN-LAST:event_gotoCHBActionPerformed
+
     /**
      *
      */
@@ -3746,7 +3753,7 @@ public void CHBEstimator() {
                 System.err.println("Error: Width, height, and wastage percentage must be non-negative.");
             }
 
-            float wallArea = wallWidth * wallHeight;
+            wallArea = wallWidth * wallHeight;
             float brickLength = 0.40f;
             float brickWidth = 0.20f;
             float brickArea = brickLength * brickWidth;
@@ -3754,7 +3761,7 @@ public void CHBEstimator() {
             float bricksNeeded = wallArea / brickArea;
             double totalBricksWithWastage = (wastagePercentage/100) * bricksNeeded;
             int roundedTotalBricks = (int) Math.round(totalBricksWithWastage);
-            int overallBricksRequired = (int) (bricksNeeded + roundedTotalBricks);
+            overallBricksRequired = (int) (bricksNeeded + roundedTotalBricks);
 
             txtf3.setText(String.valueOf(wallArea + "m²"));
             txtf6.setText(String.valueOf(overallBricksRequired));
@@ -3920,7 +3927,34 @@ public void CHBEstimator() {
         // Handle parsing errors here (e.g., display an error message to the user)
     }
 } */
-    
+    public void saveToExcel() throws IOException {
+        String filePath = "C:\\Users\\Jandell\\Music\\BOQ.xlsx";
+
+         try (Workbook workbook = new XSSFWorkbook()) {
+             Sheet sheet = workbook.createSheet("Bills of Quantity");
+
+             // Create a header row if the sheet is new
+             if (sheet.getLastRowNum() == 0) {
+                 Row headerRow = sheet.createRow(0);
+                 headerRow.createCell(0).setCellValue("Material");
+                 headerRow.createCell(1).setCellValue("Area");
+                 headerRow.createCell(2).setCellValue("Quantity");
+             }
+
+             // Add a new row with the calculated data
+             Row dataRow = sheet.createRow(sheet.getLastRowNum() + 1);
+             dataRow.createCell(0).setCellValue(CHB);
+             dataRow.createCell(1).setCellValue(wallArea);
+             dataRow.createCell(2).setCellValue(overallBricksRequired);
+
+             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+                 workbook.write(fileOut);
+                 System.out.println("Excel file updated successfully. File saved at: " + new File(filePath).getAbsolutePath());
+             } catch (IOException ex) {
+                 ex.printStackTrace();
+        }
+    }
+}
     
     
 
@@ -3958,6 +3992,7 @@ public void CHBEstimator() {
     private javax.swing.JFrame electricalFrame;
     private javax.swing.JTextField fArea;
     private javax.swing.JTextField fArea1;
+    private javax.swing.JButton gotoCHB;
     private javax.swing.JTextField gutter;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -3971,7 +4006,6 @@ public void CHBEstimator() {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;

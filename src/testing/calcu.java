@@ -25,7 +25,8 @@ import java.util.logging.Logger;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 /**
  *
@@ -3508,11 +3509,12 @@ public final class calcu extends javax.swing.JFrame {
     }//GEN-LAST:event_txtf2ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        try {
+      /*  try {
             saveToExcel();
         } catch (IOException ex) {
             Logger.getLogger(calcu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void txtf1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtf1InputMethodTextChanged
@@ -3927,34 +3929,47 @@ public void CHBEstimator() {
         // Handle parsing errors here (e.g., display an error message to the user)
     }
 } */
-    public void saveToExcel() throws IOException {
-        String filePath = "C:\\Users\\Jandell\\Music\\BOQ.xlsx";
+   public void saveToExcel() throws IOException {
+       
+    // Specify the absolute path for the Excel file
+    String filePath = "C:\\Users\\Jandell\\Music\\BOQ.xlsx";
 
-         try (Workbook workbook = new XSSFWorkbook()) {
-             Sheet sheet = workbook.createSheet("Bills of Quantity");
+    // Try to open an existing workbook or create a new one if it doesn't exist
+    try (FileInputStream fis = new FileInputStream(filePath);
+         Workbook workbook = (fis.available() > 0) ? new XSSFWorkbook(fis) : new XSSFWorkbook()) {
 
-             // Create a header row if the sheet is new
-             if (sheet.getLastRowNum() == 0) {
-                 Row headerRow = sheet.createRow(0);
-                 headerRow.createCell(0).setCellValue("Material");
-                 headerRow.createCell(1).setCellValue("Area");
-                 headerRow.createCell(2).setCellValue("Quantity");
-             }
+        // Get the sheet named "Bills of Quantity" or create a new one if it doesn't exist
+        Sheet sheet = workbook.getSheet("Bills of Quantity");
+        if (sheet == null) {
+            sheet = workbook.createSheet("Bills of Quantity");
 
-             // Add a new row with the calculated data
-             Row dataRow = sheet.createRow(sheet.getLastRowNum() + 1);
-             dataRow.createCell(0).setCellValue(CHB);
-             dataRow.createCell(1).setCellValue(wallArea);
-             dataRow.createCell(2).setCellValue(overallBricksRequired);
+            // Create a header row if the sheet is new
+            if (sheet.getLastRowNum() == 0) {
+                Row headerRow = sheet.createRow(0);
+                headerRow.createCell(0).setCellValue("Material");
+                headerRow.createCell(1).setCellValue("Area (m)");
+                headerRow.createCell(2).setCellValue("Quantity");
+            }
+        }
 
-             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
-                 workbook.write(fileOut);
-                 System.out.println("Excel file updated successfully. File saved at: " + new File(filePath).getAbsolutePath());
-             } catch (IOException ex) {
-                 ex.printStackTrace();
+        // Add a new row with the calculated data
+        Row dataRow = sheet.createRow(sheet.getLastRowNum() + 1);
+        dataRow.createCell(0).setCellValue(CHB);
+        dataRow.createCell(1).setCellValue(wallArea);
+        dataRow.createCell(2).setCellValue(overallBricksRequired);
+
+        // Write the workbook to the file
+        try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
+            workbook.write(fileOut);
+            System.out.println("Excel file updated successfully. File saved at: " + new File(filePath).getAbsolutePath());
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }
+
+ 
+    
     
     
 
